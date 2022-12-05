@@ -1,0 +1,50 @@
+[
+    {
+       "id":1,
+       "nombre":"Teclado Gamer RGB",
+       "precio":5000,
+       "imagen":"https://th.bing.com/th/id/OIP.rs855LGuZRnPR6ZVv2_vEwHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":2,
+       "nombre":"Auriculares Gamer",
+       "precio":8000,
+       "imagen":"https://th.bing.com/th/id/OIP.aWLWzLlkMkiU2Y14rlBC3QHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":3,
+       "nombre":"Mouse Gamer",
+       "precio":2500,
+       "imagen":"https://th.bing.com/th/id/OIP.cLXLojNhyuItRVRR0hLgTQHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":4,
+       "nombre":"Silla Gamer",
+       "precio":25000,
+       "imagen":"https://th.bing.com/th/id/OIP.hwZxbLwxijs6d3yG3xSUiwHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":5,
+       "nombre":"Monitor Full HD - 24' pulgadas",
+       "precio":30000,
+       "imagen":"https://th.bing.com/th/id/OIP.ZOzIzlLRSc2du1FLdWec8QHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":6,
+       "nombre":"Microfono",
+       "precio":15000,
+       "imagen":"https://th.bing.com/th/id/OIP.5xtdf6YcUxlyOBp9kq4h-AHaHa?pid=ImgDet&rs=1"
+    },
+    {
+       "id":7,
+       "nombre":"MousePad XL",
+       "precio":4500,
+       "imagen":"https://ddtech.mx/assets/uploads/abd0aca1e9ac19367d3a20fd7458e279.jpg"
+    },
+    {
+       "id":8,
+       "nombre":"Camara HD",
+       "precio":16000,
+       "imagen":"https://th.bing.com/th/id/OIP.x6rMYJmsu1k2Du3Mtq8l2gHaHa?pid=ImgDet&rs=1"
+    }
+ ]

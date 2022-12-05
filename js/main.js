@@ -55,6 +55,7 @@ const DOMitems = document.querySelector('#items');
 const DOMcarrito = document.querySelector('#carrito');
 const DOMtotal = document.querySelector('#total');
 const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+const DOMbotonComprar = document.querySelector('#boton-comprar');
 
 let sesion = Swal.fire({
     title: 'Escribe tu nombre de usuario de GitHub',
@@ -96,8 +97,11 @@ let sesion = Swal.fire({
   })
 
 function renderizarProductos() {
-    baseDeDatos.forEach((info) => {
-    
+  fetch('./data/datos.json')
+  .then(res=>res.json())
+  .then(data=>{
+    console.log();
+    data.forEach((info) => {
         const miNodo = document.createElement('div');
         miNodo.classList.add('card', 'col-sm-4');
         
@@ -129,16 +133,19 @@ function renderizarProductos() {
         miNodo.appendChild(miNodoCardBody);
         DOMitems.appendChild(miNodo);
     });
+  });
 }
 
 
 function anyadirProductoAlCarrito(evento) {
     
     carrito.push(evento.target.getAttribute('marcador'))
+    localStorage.setItem('carrito', JSON.stringify(carrito));
     
     renderizarCarrito();
 
 }
+
 
 
 function renderizarCarrito() {
@@ -150,7 +157,6 @@ function renderizarCarrito() {
     carritoSinDuplicados.forEach((item) => {
         
         const miItem = baseDeDatos.filter((itemBaseDatos) => {
-            
             return itemBaseDatos.id === parseInt(item);
         });
         
@@ -160,7 +166,7 @@ function renderizarCarrito() {
         }, 0);
         
         const miNodo = document.createElement('li');
-        miNodo.classList.add('list-group-item', 'text-right', 'mx-3');
+        miNodo.classList.add('list-group-item', 'text-right', 'mx-8');
         miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
         
         const miBoton = document.createElement('button');
@@ -209,6 +215,17 @@ function vaciarCarrito() {
     renderizarCarrito();
 }
 
+DOMbotonComprar.addEventListener('click',()=>{
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Tu compra ha sido realizada con exito',
+    showConfirmButton: false,
+    timer: 1500
+  });
+  vaciarCarrito();
+})
+
 DOMbotonVaciar.addEventListener('click',()=>{
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -238,15 +255,15 @@ DOMbotonVaciar.addEventListener('click',()=>{
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
+            'Cancelado',
+            'Se cancelo correctamente',
             'error'
           )
         }
     });
 });
 
-
+localStorage.setItem('datos', JSON.stringify(baseDeDatos));
 
 renderizarProductos();
 renderizarCarrito();
