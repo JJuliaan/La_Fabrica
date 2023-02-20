@@ -50,12 +50,12 @@ const baseDeDatos = [
 ];
 
 let carrito = [];
-const divisa = '$';
-const DOMitems = document.querySelector('#items');
+const pesos = '$';
+const items = document.querySelector('#items');
 const DOMcarrito = document.querySelector('#carrito');
-const DOMtotal = document.querySelector('#total');
-const DOMbotonVaciar = document.querySelector('#boton-vaciar');
-const DOMbotonComprar = document.querySelector('#boton-comprar');
+const total = document.querySelector('#total');
+const botonVaciar = document.querySelector('#boton-vaciar');
+const botonComprar = document.querySelector('#boton-comprar');
 
 let sesion = Swal.fire({
     title: 'Escribe tu nombre de usuario de GitHub',
@@ -118,7 +118,7 @@ function renderizarProductos() {
         
         const miNodoPrecio = document.createElement('p');
         miNodoPrecio.classList.add('card-text');
-        miNodoPrecio.textContent = `${info.precio}${divisa}`;
+        miNodoPrecio.textContent = `${info.precio}${pesos}`;
         
         const miNodoBoton = document.createElement('button');
         miNodoBoton.classList.add('btn', 'btn-primary');
@@ -131,7 +131,7 @@ function renderizarProductos() {
         miNodoCardBody.appendChild(miNodoPrecio);
         miNodoCardBody.appendChild(miNodoBoton);
         miNodo.appendChild(miNodoCardBody);
-        DOMitems.appendChild(miNodo);
+        items.appendChild(miNodo);
     });
   });
 }
@@ -167,7 +167,7 @@ function renderizarCarrito() {
         
         const miNodo = document.createElement('li');
         miNodo.classList.add('list-group-item', 'text-right', 'mx-8');
-        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${pesos}`;
         
         const miBoton = document.createElement('button');
         miBoton.classList.add('btn', 'btn-danger', 'mx-5');
@@ -180,7 +180,7 @@ function renderizarCarrito() {
         DOMcarrito.appendChild(miNodo);
     });
     
-    DOMtotal.textContent = calcularTotal();
+    total.textContent = calcularTotal();
 }
 
 
@@ -215,7 +215,7 @@ function vaciarCarrito() {
     renderizarCarrito();
 }
 
-DOMbotonComprar.addEventListener('click',()=>{
+botonComprar.addEventListener('click',()=>{
   Swal.fire({
     position: 'top-end',
     icon: 'success',
@@ -226,7 +226,7 @@ DOMbotonComprar.addEventListener('click',()=>{
   vaciarCarrito();
 })
 
-DOMbotonVaciar.addEventListener('click',()=>{
+botonVaciar.addEventListener('click',()=>{
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -245,7 +245,7 @@ DOMbotonVaciar.addEventListener('click',()=>{
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            DOMbotonVaciar.addEventListener(vaciarCarrito(), swalWithBootstrapButtons.fire(
+            botonVaciar.addEventListener(vaciarCarrito(), swalWithBootstrapButtons.fire(
                 'Borrado',
                 'Tu carrito se vacio correctamente',
                 'success'
